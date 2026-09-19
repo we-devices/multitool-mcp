@@ -1,5 +1,5 @@
 [build-system]
-requires = ["setuptools>=68"]
+requires = ["setuptools>=77.0.3"]
 build-backend = "setuptools.build_meta"
 
 [project]
@@ -8,11 +8,11 @@ version = "0.1.0"
 description = "MCP server for debugging devices under test through WE Multitool"
 readme = "README.md"
 requires-python = ">=3.11"
-license = { file = "LICENSE" }
+license = "GPL-3.0-or-later"
+license-files = ["LICENSE"]
 authors = [{ name = "Wise Electronics" }]
 classifiers = [
     "Development Status :: 3 - Alpha",
-    "License :: OSI Approved :: GNU General Public License v3 or later (GPLv3+)",
     "Operating System :: OS Independent",
     "Programming Language :: Python :: 3",
     "Programming Language :: Python :: 3 :: Only",
@@ -28,8 +28,9 @@ test = ["pytest>=8"]
 multitool-mcp = "dut_mcp.server:main"
 
 [project.urls]
-Homepage = "https://github.com/wise-electronics/multitool-mcp"
-Issues = "https://github.com/wise-electronics/multitool-mcp/issues"
+Homepage = "https://github.com/we-devices/multitool-mcp"
+Repository = "https://github.com/we-devices/multitool-mcp.git"
+Issues = "https://github.com/we-devices/multitool-mcp/issues"
 
 [tool.setuptools]
 package-dir = { "" = "src" }
