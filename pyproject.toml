@@ -11,6 +11,7 @@ requires-python = ">=3.11"
 license = "GPL-3.0-or-later"
 license-files = ["LICENSE"]
 authors = [{ name = "Wise Electronics" }]
+keywords = ["mcp", "embedded", "hardware", "debugging", "we-multitool"]
 classifiers = [
     "Development Status :: 3 - Alpha",
     "Operating System :: OS Independent",
