@@ -172,7 +172,7 @@ class McpServer:
                 return self._result(request_id, {
                     "protocolVersion": requested or self.PROTOCOL_VERSION,
                     "capabilities": {"tools": {"listChanged": False}},
-                    "serverInfo": {"name": "we-multitool-dut", "version": "0.1.0"},
+                    "serverInfo": {"name": "multitool-mcp", "version": "0.1.0"},
                     "instructions": "Debug DUTs through WE Multitool. Read pins_get before configuring pins. Prefer read-only observations first. Confirm wiring, voltage, bus role, and target limits before changing GPIO/PWM or writing UART/I2C/SPI. Commands are serialized because firmware responses have no request IDs.",
                 })
             if method == "ping":
