@@ -1,6 +1,6 @@
 # WE Multitool DUT MCP
 
-`we-multitool-dut` is a dependency-free [Model Context Protocol](https://modelcontextprotocol.io/) server for inspecting and debugging a device under test (DUT) through a Wise Electronics WE Multitool.
+`multitool-mcp` is a dependency-free [Model Context Protocol](https://modelcontextprotocol.io/) server for inspecting and debugging a device under test (DUT) through a Wise Electronics WE Multitool.
 
 It runs over standard input/output and bridges the Multitool's JSON-over-WebSocket API. It exposes bounded MCP tools for GPIO, I2C, SPI, UART, PWM, and GPIO ownership.
 
@@ -14,7 +14,7 @@ It runs over standard input/output and bridges the Multitool's JSON-over-WebSock
 Install from PyPI once published:
 
 ```shell
-python -m pip install we-multitool-dut
+python -m pip install multitool-mcp
 ```
 
 For development from a clone:
@@ -29,14 +29,12 @@ Run the installed command:
 
 ```toml
 [mcp_servers.we_multitool_dut]
-command = "we-multitool-dut"
+command = "multitool-mcp"
 env_vars = ["WE_MULTITOOL_URL", "WE_MULTITOOL_TIMEOUT_SECONDS"]
 startup_timeout_sec = 10
 tool_timeout_sec = 35
 default_tools_approval_mode = "prompt"
 ```
-
-You can also use `python -m dut_mcp`.
 
 By default, the server connects to `ws://we-multitool.local/ws`. Set these environment variables before starting the MCP client to change that:
 
@@ -72,4 +70,5 @@ The runtime has no third-party dependencies. The optional `test` extra installs 
 
 ## License
 
-MIT. See [LICENSE](LICENSE).
+Licensed under the GNU General Public License, version 3 or later
+(GPL-3.0-or-later). See [LICENSE](LICENSE).
