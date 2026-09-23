@@ -54,6 +54,8 @@ $env:WE_MULTITOOL_TIMEOUT_SECONDS = "8"
 
 Read `pins_get` before configuring pins, and verify wiring, voltage, bus role, and DUT limits before driving signals.
 
+`gpio_configure` accepts `input`, `output`, and `open-drain` directions. Open-drain mode requires firmware with `open-drain` GPIO setup support and an appropriate external pull-up.
+
 - Commands are serialized because firmware responses do not carry request IDs.
 - UART data received while another command awaits a response is buffered.
 - The `gpio_set` firmware command has no acknowledgement; `gpio_write` reports it as dispatched but unverified.

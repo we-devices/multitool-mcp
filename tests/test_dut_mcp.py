@@ -64,6 +64,7 @@ def test_initialize_and_tool_annotations():
     tools = {tool["name"]: tool for tool in listed["result"]["tools"]}
     assert tools["gpio_read"]["annotations"]["readOnlyHint"] is True
     assert tools["gpio_write"]["annotations"]["readOnlyHint"] is False
+    assert tools["gpio_configure"]["inputSchema"]["properties"]["direction"]["enum"] == ["input", "output", "open-drain"]
     assert tools["i2c_read"]["inputSchema"]["additionalProperties"] is False
 
 
@@ -93,6 +94,13 @@ def test_gpio_write_reports_unverified_dispatch():
     response = server.handle({"jsonrpc": "2.0", "id": 6, "method": "tools/call", "params": {"name": "gpio_write", "arguments": {"pin": 4, "level": 1}}})
     assert transport.sent == [{"type": "gpio_set", "pin": 4, "state": 1}]
     assert response["result"]["structuredContent"]["verified"] is False
+
+
+def test_gpio_configure_forwards_open_drain_direction():
+    server, transport = make_server([{"type": "status", "data": "GPIO[4] successfully configured"}])
+    response = server.handle({"jsonrpc": "2.0", "id": 10, "method": "tools/call", "params": {"name": "gpio_configure", "arguments": {"pin": 4, "direction": "open-drain"}}})
+    assert transport.sent == [{"type": "gpio_setup", "pin": 4, "dir": "open-drain"}]
+    assert response["result"].get("isError") is not True
 
 
 def test_device_error_becomes_mcp_tool_error():

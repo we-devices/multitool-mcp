@@ -66,7 +66,7 @@ class DutTools:
         return [
             Tool("device_status", "Connect to WE Multitool and return its URL and GPIO ownership map.", _object_schema({}), self.device_status, True),
             Tool("pins_get", "Read the current GPIO ownership map before assigning pins.", _object_schema({}), self.pins_get, True),
-            Tool("gpio_configure", "Configure a free GPIO as input or output.", _object_schema({"pin": PIN, "direction": {"type": "string", "enum": ["input", "output"]}}, ["pin", "direction"]), self.gpio_configure, False, True),
+            Tool("gpio_configure", "Configure a free GPIO as input, push-pull output, or open-drain output.", _object_schema({"pin": PIN, "direction": {"type": "string", "enum": ["input", "output", "open-drain"]}}, ["pin", "direction"]), self.gpio_configure, False, True),
             Tool("gpio_read", "Read a GPIO that is configured as input.", _object_schema({"pin": PIN}, ["pin"]), self.gpio_read, True),
             Tool("gpio_write", "Drive a GPIO configured as output. Firmware dispatches this command without an acknowledgement.", _object_schema({"pin": PIN, "level": {"type": "integer", "enum": [0, 1]}}, ["pin", "level"]), self.gpio_write, False, True),
             Tool("i2c_configure", "Configure WE Multitool as an I2C master.", _object_schema({"sda_pin": PIN, "scl_pin": PIN, "frequency_hz": {"type": "integer", "minimum": 1000, "maximum": 1000000}}, ["sda_pin", "scl_pin", "frequency_hz"]), self.i2c_configure, False, True),
